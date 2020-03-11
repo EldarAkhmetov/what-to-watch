@@ -1,20 +1,19 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Main from './main.jsx';
+import FilmList from './film-list.jsx';
 
-it(`Main correctly renders after relaunch`, () => {
+it(`App correctly renders after relaunch`, () => {
   const mock = [
     {
       id: 1,
-      title: `Aviator`,
+      title: `12`,
       image: ``
     }
   ];
 
   const tree = renderer
-    .create(<Main
+    .create(<FilmList
       films={mock}
-      onClick={() => {}}
     />)
     .toJSON();
 
