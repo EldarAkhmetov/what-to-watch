@@ -18,7 +18,7 @@ class FilmList extends PureComponent {
       <div className="catalog__movies-list">
         {films.map((it, ind) => {
           return <FilmCard
-            key={`card-${ind}`}
+            key={`card-${ind}-${it.id}`}
             film={it}
             onCardHover={this._cardHoverHandler.bind(this)}
           />;

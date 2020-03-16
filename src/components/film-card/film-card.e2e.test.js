@@ -10,7 +10,8 @@ it(`Callback function launches after article is clicked`, () => {
   const mock = {
     id: 1,
     title: `Filthy Eight`,
-    image: ``
+    image: ``,
+    src: ``
   };
 
   const tree = shallow(<FilmCard
