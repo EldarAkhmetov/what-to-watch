@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 import FilmCard from '../film-card/film-card.jsx';
 
@@ -13,16 +14,23 @@ class FilmList extends PureComponent {
   }
 
   render() {
-    const {films} = this.props;
+    const {films, currentGenre} = this.props;
     return (
       <div className="catalog__movies-list">
-        {films.map((it, ind) => {
-          return <FilmCard
-            key={`card-${ind}-${it.id}`}
-            film={it}
-            onCardHover={this._cardHoverHandler.bind(this)}
-          />;
-        })}
+        {films
+          .filter(({genre}) => {
+            if (currentGenre === `all`) {
+              return true;
+            }
+            return genre === currentGenre;
+          })
+          .map((it, ind) => {
+            return <FilmCard
+              key={`card-${ind}-${it.id}`}
+              film={it}
+              onCardHover={this._cardHoverHandler.bind(this)}
+            />;
+          })}
       </div>
     );
   }
@@ -40,6 +48,15 @@ FilmList.propTypes = {
     title: PropTypes.string,
     image: PropTypes.string
   })),
+  currentGenre: PropTypes.string
 };
 
-export default FilmList;
+const mapStateToProps = (state, ownProps) => Object.assign(
+    {},
+    ownProps,
+    {currentGenre: state.currentGenre}
+);
+
+export {FilmList};
+
+export default connect(mapStateToProps)(FilmList);
