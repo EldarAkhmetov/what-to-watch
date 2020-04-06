@@ -7,14 +7,10 @@ import FilmCard from '../film-card/film-card.jsx';
 class FilmList extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      activeCardId: null
-    };
   }
 
   render() {
-    const {films, currentGenre} = this.props;
+    const {films, currentGenre, activeItemId, changeActiveItemId} = this.props;
     return (
       <div className="catalog__movies-list">
         {films
@@ -28,17 +24,11 @@ class FilmList extends PureComponent {
             return <FilmCard
               key={`card-${ind}-${it.id}`}
               film={it}
-              onCardHover={this._cardHoverHandler.bind(this)}
+              onCardHover={changeActiveItemId(activeItemId)}
             />;
           })}
       </div>
     );
-  }
-
-  _cardHoverHandler(cardId) {
-    this.setState({
-      activeCardId: cardId
-    });
   }
 }
 
@@ -48,7 +38,9 @@ FilmList.propTypes = {
     title: PropTypes.string,
     image: PropTypes.string
   })),
-  currentGenre: PropTypes.string
+  currentGenre: PropTypes.string,
+  activeItemId: PropTypes.number,
+  changeActiveItemId: PropTypes.func
 };
 
 const mapStateToProps = (state, ownProps) => Object.assign(

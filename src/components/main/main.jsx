@@ -2,6 +2,9 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import FilmList from '../film-list/film-list.jsx';
 import GenreList from '../genre-list/genre-list.jsx';
+import withActivePlayer from '../../hocs/with-active-player/with-active-player.js';
+
+const FilmListWrapped = withActivePlayer(FilmList);
 
 const Main = (props) => {
   const {films} = props;
@@ -67,7 +70,7 @@ const Main = (props) => {
         <section className="catalog">
           <GenreList />
 
-          <FilmList
+          <FilmListWrapped
             films={films}
           />
 
