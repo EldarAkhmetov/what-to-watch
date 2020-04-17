@@ -45,16 +45,16 @@ class FilmCard extends PureComponent {
           { isPlaying ?
             <VideoPlayer
               properties={this.PREVIEW_PROPERTIES}
-              src={film.src}
+              src={film.preview.videoSrc}
               isPlaying={isPlaying}
-              poster={film.image}
+              poster={film.preview.image}
             /> :
             <Fragment>
               <div className="small-movie-card__image">
-                <img src={film.image} alt={film.title} width="280" height="175" />
+                <img src={film.preview.image} alt={film.name} width="280" height="175" />
               </div>
               <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">{film.title}</a>
+                <a className="small-movie-card__link" href="movie-page.html">{film.name}</a>
               </h3>
             </Fragment>
           }
@@ -67,9 +67,10 @@ class FilmCard extends PureComponent {
 FilmCard.propTypes = {
   film: PropTypes.shape({
     id: PropTypes.number,
-    title: PropTypes.string,
+    name: PropTypes.string,
     image: PropTypes.string,
-    src: PropTypes.string
+    src: PropTypes.string,
+    preview: PropTypes.object
   }),
   onCardHover: PropTypes.func
 };

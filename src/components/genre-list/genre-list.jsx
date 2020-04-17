@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import {genres, ActionCreator} from '../../reducer/reducer.js';
+import {genres, ActionCreator} from '../../reducer/app/reducer.js';
 
 const GenreList = (props) => {
   const {onGenreChange, currentGenre} = props;
@@ -35,7 +35,7 @@ GenreList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  currentGenre: state.currentGenre,
+  currentGenre: state.app.currentGenre,
 });
 
 const mapDispatchToProps = (dispatch) => {

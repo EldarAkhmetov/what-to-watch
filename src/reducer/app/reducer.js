@@ -4,15 +4,15 @@ const initialState = {
 
 const genres = {
   all: `All Genres`,
-  comedy: `Comedies`,
-  crime: `Crime`,
-  documentary: `Documentary`,
-  drama: `Dramas`,
-  horror: `Horror`,
-  kidsAndFamily: `Kids & Family`,
-  romance: `Romance`,
-  sciFi: `Sci-Fi`,
-  thriller: `Thrillers`
+  Comedy: `Comedies`,
+  Crime: `Crime`,
+  Documentary: `Documentary`,
+  Drama: `Dramas`,
+  Horror: `Horror`,
+  KidsAndFamily: `Kids & Family`,
+  Romance: `Romance`,
+  SciFi: `Sci-Fi`,
+  Thriller: `Thrillers`
 };
 
 const ActionCreator = {

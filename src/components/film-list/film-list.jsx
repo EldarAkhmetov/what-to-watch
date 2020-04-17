@@ -46,7 +46,7 @@ FilmList.propTypes = {
 const mapStateToProps = (state, ownProps) => Object.assign(
     {},
     ownProps,
-    {currentGenre: state.currentGenre}
+    {currentGenre: state.app.currentGenre}
 );
 
 export {FilmList};

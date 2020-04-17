@@ -1,3 +1,5 @@
+import {connect} from 'react-redux';
+
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import FilmList from '../film-list/film-list.jsx';
@@ -7,7 +9,7 @@ import withActivePlayer from '../../hocs/with-active-player/with-active-player.j
 const FilmListWrapped = withActivePlayer(FilmList);
 
 const Main = (props) => {
-  const {films} = props;
+  const {films, data} = props;
 
   return (
     <Fragment>
@@ -71,7 +73,7 @@ const Main = (props) => {
           <GenreList />
 
           <FilmListWrapped
-            films={films}
+            films={films.map((it) => data[it])}
           />
 
           <div className="catalog__more">
@@ -98,11 +100,15 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    title: PropTypes.string,
-    image: PropTypes.string
-  })).isRequired,
+  films: PropTypes.array,
+  data: PropTypes.object
 };
 
-export default Main;
+const mapStateToProps = (state) => ({
+  films: state.films.data.allIDs,
+  data: state.films.data.byIDs
+});
+
+export {Main};
+
+export default connect(mapStateToProps)(Main);
