@@ -1,5 +1,6 @@
 import React, {Fragment, PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
 import VideoPlayer from '../video-player/video-player.jsx';
 
@@ -13,7 +14,7 @@ class FilmCard extends PureComponent {
 
     this.PREVIEW_PROPERTIES = {
       width: 280,
-      height: 175
+      height: 170
     };
 
   }
@@ -48,16 +49,17 @@ class FilmCard extends PureComponent {
               src={film.preview.videoSrc}
               isPlaying={isPlaying}
               poster={film.preview.image}
-            /> :
+            />
+            :
             <Fragment>
               <div className="small-movie-card__image">
                 <img src={film.preview.image} alt={film.name} width="280" height="175" />
               </div>
-              <h3 className="small-movie-card__title">
-                <a className="small-movie-card__link" href="movie-page.html">{film.name}</a>
-              </h3>
             </Fragment>
           }
+          <h3 className="small-movie-card__title">
+            <Link className="small-movie-card__link" to={{pathname:`/${film.name}`, state: film}} >{film.name}</Link>
+          </h3>
         </article>
       </Fragment>
     );

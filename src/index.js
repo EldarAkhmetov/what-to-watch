@@ -3,9 +3,11 @@ import {Provider} from 'react-redux';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 import thunk from 'redux-thunk';
 import {compose} from 'recompose';
+
 
 import configureAPI from './server/configure-API.js';
 
@@ -15,6 +17,7 @@ import {reducer as appReducer} from './reducer/app/reducer.js';
 import {filmsReducer, filmsOperations} from './reducer/films/index.js';
 
 const init = () => {
+
   const api = configureAPI((...args) => store.dispatch(...args));
 
   const rootReducer = combineReducers({
@@ -34,7 +37,9 @@ const init = () => {
 
   ReactDOM.render(
       <Provider store={store}>
-        <App />
+        <Router>
+          <App />        
+        </Router>        
       </Provider>,
       document.querySelector(`#root`)
   );

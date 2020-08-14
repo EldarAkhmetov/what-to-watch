@@ -24,7 +24,7 @@ class FilmList extends PureComponent {
             return <FilmCard
               key={`card-${ind}-${it.id}`}
               film={it}
-              onCardHover={changeActiveItemId(activeItemId)}
+              onCardHover={() => changeActiveItemId(activeItemId)}
             />;
           })}
       </div>
