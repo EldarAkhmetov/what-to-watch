@@ -38,8 +38,8 @@ const init = () => {
   ReactDOM.render(
       <Provider store={store}>
         <Router>
-          <App />        
-        </Router>        
+          <App />
+        </Router>
       </Provider>,
       document.querySelector(`#root`)
   );

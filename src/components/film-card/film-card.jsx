@@ -58,7 +58,7 @@ class FilmCard extends PureComponent {
             </Fragment>
           }
           <h3 className="small-movie-card__title">
-            <Link className="small-movie-card__link" to={{pathname:`/${film.name}`, state: film}} >{film.name}</Link>
+            <Link className="small-movie-card__link" to={{pathname: `/${film.name}`, state: film}} >{film.name}</Link>
           </h3>
         </article>
       </Fragment>
